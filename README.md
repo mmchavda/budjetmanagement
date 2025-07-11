@@ -6,7 +6,7 @@ A customizable Rails application for managing participatory budgeting workflows.
 
 - **Ruby**: 3.4.4
 - **Rails**: 8.0.4
-- **PostgreSQL** or SQLite
+- **MySQL** 
 
 ---
 
@@ -57,7 +57,7 @@ resources :projects do
   resource :impact_metric
 end
 
-🧪 Installation
+## 🧪 Installation
 Clone the repo git clone https://github.com/your-username/budget-platform.git
 
 Install dependencies bundle install
