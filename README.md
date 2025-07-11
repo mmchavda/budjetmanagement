@@ -56,10 +56,11 @@ end
 resources :projects do
   resource :impact_metric
 end
+```
 
----
 
-## 🧪 Installation
+
+🧪 Installation
 Clone the repo git clone https://github.com/your-username/budget-platform.git
 
 Install dependencies bundle install
@@ -72,3 +73,22 @@ rails db:migrate
 Run the server rails server
 
 Visit http://localhost:3000
+
+🛡️ Validation Highlights
+Project allocation checks category limit in controller & model
+
+Phase dates validated against each other
+
+Impact metric requires all key fields
+
+📊 Demo
+Show budget creation
+
+Allocate projects within limits
+
+Transition voting phases
+
+Display impact dashboard
+
+
+
