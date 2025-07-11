@@ -1,0 +1,12 @@
+<%= form_with(model: @budget_category, local: true) do |f| %>
+<%= f.hidden_field :budget_id %>
+<div class="mb-3">
+<%= f.label :name %>
+<%= f.text_field :name, class: "form-control" %>
+</div>
+<div class="mb-3">
+<%= f.label :spending_limit_percentage %>
+<%= f.number_field :spending_limit_percentage, step: 0.1, class: "form-control" %>
+</div>
+<%= f.submit class: "btn btn-success" %>
+<% end %>

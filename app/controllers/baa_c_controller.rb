@@ -1,0 +1,2 @@
+class BaaCController < ApplicationController
+end

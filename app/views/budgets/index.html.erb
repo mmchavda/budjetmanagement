@@ -1,0 +1,22 @@
+<h1>All Budgets</h1>
+<%= link_to "Create New Budget", new_budget_path, class: "btn btn-primary" %>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Total Amount</th>
+<th>Dates</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<% @budgets.each do |budget| %>
+<tr>
+<td><%= budget.name %></td>
+<td><%= number_to_currency(budget.total_amount) %></td>
+<td><%= budget.start_date %> - <%= budget.end_date %></td>
+<td><%= link_to "View", budget_path(budget), class: "btn btn-sm btn-secondary" %></td>
+</tr>
+<% end %>
+</tbody>
+</table>

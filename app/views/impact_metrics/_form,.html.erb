@@ -1,0 +1,16 @@
+<%= form_with(model: @impact_metric, local: true) do |f| %>
+<%= f.hidden_field :project_id %>
+<div class="mb-3">
+<%= f.label :estimated_beneficiaries %>
+<%= f.number_field :estimated_beneficiaries, class: "form-control" %>
+</div>
+<div class="mb-3">
+<%= f.label :timeline %>
+<%= f.text_field :timeline, class: "form-control" %>
+</div>
+<div class="mb-3">
+<%= f.label :sustainability_score %>
+<%= f.text_field :sustainability_score, class: "form-control" %>
+</div>
+<%= f.submit class: "btn btn-success" %>
+<% end %>

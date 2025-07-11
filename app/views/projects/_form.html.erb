@@ -1,0 +1,22 @@
+<%= form_with(model: @project, local: true) do |f| %>
+<%= f.hidden_field :budget_id %>
+<div class="mb-3">
+<%= f.label :budget_category_id %>
+<%= f.collection_select :budget_category_id, BudgetCategory.all, :id, :name, class: "form-control" %>
+</div>
+<div class="mb-3">
+<%= f.label :name %>
+<%= f.text_field :name, class: "form-control" %>
+</div>
+<div class="mb-3">
+<%= f.label :description %>
+<%= f.text_area :description, class: "form-control" %>
+</div>
+<div class="mb-3">
+<%= f.label :allocated_amount %>
+<%= f.number_field :allocated_amount, step: 0.01, class: "form-control" %>
+</div>
+<%= f.submit class: "btn btn-success" %>
+<% end %>
+
+ 

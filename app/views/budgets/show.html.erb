@@ -1,0 +1,14 @@
+<h1><%= @budget.name %></h1>
+<p><strong>Total:</strong> <%= number_to_currency(@budget.total_amount) %></p>
+<p><strong>Period:</strong> <%= @budget.start_date %> to <%= @budget.end_date %></p>
+ 
+<h2>Actions</h2>
+<%= link_to "Edit Budget", edit_budget_path(@budget), class: "btn btn-warning" %>
+<%= link_to "Delete", budget_path(@budget), method: :delete, data: { confirm: "Delete this budget?" }, class: "btn btn-danger" %>
+ 
+<h2>Related</h2>
+<ul>
+<li><%= link_to "Add Category", new_budget_budget_category_path(@budget) %></li>
+<li><%= link_to "Add Phase", new_budget_budget_phase_path(@budget) %></li>
+<li><%= link_to "Add Project", new_budget_projects_path(@budget) %></li>
+</ul>

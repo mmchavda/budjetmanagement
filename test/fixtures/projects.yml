@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: MyString
+  budget_category: MyString
+  name: MyString
+  description: MyString
+  allocated_amount15: MyString
+  allocated_amount2: MyString
+
+two:
+  budget: MyString
+  budget_category: MyString
+  name: MyString
+  description: MyString
+  allocated_amount15: MyString
+  allocated_amount2: MyString
