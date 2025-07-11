@@ -5,10 +5,78 @@
 <h2>Actions</h2>
 <%= link_to "Edit Budget", edit_budget_path(@budget), class: "btn btn-warning" %>
 <%= link_to "Delete", budget_path(@budget), method: :delete, data: { confirm: "Delete this budget?" }, class: "btn btn-danger" %>
- 
+
 <h2>Related</h2>
 <ul>
 <li><%= link_to "Add Category", new_budget_budget_category_path(@budget) %></li>
 <li><%= link_to "Add Phase", new_budget_budget_phase_path(@budget) %></li>
 <li><%= link_to "Add Project", new_budget_project_path(@budget) %></li>
 </ul>
+
+<h2>Budget Categories (<%= @categories.count %>)</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Spending Limit (%)</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<% @categories.each do |category| %>
+<tr>
+<td><%= category.name %></td>
+<td><%= category.spending_limit_percentage %></td>
+<td><%= link_to "Edit", edit_budget_budget_category_path(@budget, category), class: "btn btn-sm btn-secondary" %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<h2>Budget Phases (<%= @phases.count %>)</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Start</th>
+<th>End</th>
+<th>Voting Rules</th>
+</tr>
+</thead>
+<tbody>
+<% @phases.each do |phase| %>
+<tr>
+<td><%= phase.name %></td>
+<td><%= phase.start_date %></td>
+<td><%= phase.end_date %></td>
+<td><%= truncate(phase.voting_rules, length: 60) %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<h2>Projects (<%= @projects.count %>)</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Category</th>
+<th>Allocated Amount</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<% @projects.each do |project| %>
+<tr>
+<td><%= project.name %></td>
+<td><%= project.budget_category.name if project.budget_category %></td>
+<td><%= number_to_currency(project.allocated_amount) %></td>
+<td><%= truncate(project.description, length: 80) %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+ 
+
+ 

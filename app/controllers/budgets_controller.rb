@@ -19,7 +19,17 @@ class BudgetsController < ApplicationController
       render :new
     end
   end
- 
+ def show
+  @budget = Budget.find(params[:id])
+  @categories = @budget.budget_categories
+  @phases = @budget.budget_phases
+  @projects = @budget.projects
+end
+def destroy
+  @budget = Budget.find(params[:id])
+  @budget.destroy
+  redirect_to budgets_path, notice: "Budget deleted successfully."
+end
   def edit
     @budget = Budget.find(params[:id])
   end
