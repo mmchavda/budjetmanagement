@@ -1,4 +1,5 @@
-<%= form_with(model: @budget_category, local: true) do |f| %>
+<%= form_with(model: [@budget, @budget_category], local: true) do |f| %>
+
 <%= f.hidden_field :budget_id %>
 <div class="mb-3">
 <%= f.label :name %>

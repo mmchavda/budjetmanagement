@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_11_080551) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_11_110745) do
   create_table "budget_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "budget"
     t.string "name"
     t.string "spending_limit_percentage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "budget_id", null: false
+    t.index ["budget_id"], name: "index_budget_categories_on_budget_id"
   end
 
   create_table "budget_phases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -28,14 +30,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_080551) do
     t.string "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "budget_id", null: false
+    t.index ["budget_id"], name: "index_budget_phases_on_budget_id"
   end
 
   create_table "budgets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "total_amount15"
-    t.string "total_amount2"
-    t.string "start_date"
-    t.string "end_date"
+    t.string "name", null: false
+    t.decimal "total_amount", precision: 15, scale: 2, default: "0.0"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,13 +53,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_080551) do
   end
 
   create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "budget"
-    t.string "budget_category"
-    t.string "name"
-    t.string "description"
-    t.string "allocated_amount15"
-    t.string "allocated_amount2"
+    t.bigint "budget_id", null: false
+    t.bigint "budget_category_id", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.decimal "allocated_amount", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["budget_category_id"], name: "index_projects_on_budget_category_id"
+    t.index ["budget_id"], name: "index_projects_on_budget_id"
   end
+
+  add_foreign_key "budget_categories", "budgets"
+  add_foreign_key "budget_phases", "budgets"
+  add_foreign_key "projects", "budget_categories"
+  add_foreign_key "projects", "budgets"
 end

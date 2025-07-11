@@ -1,20 +1,32 @@
-<%= form_with(model: @budget_phase, local: true) do |f| %>
+<%= form_with(model: [@budget, @budget_phase], local: true) do |f| %>
 <%= f.hidden_field :budget_id %>
-<div class="mb-3">
+ 
+  <div class="mb-3">
 <%= f.label :name %>
 <%= f.text_field :name, class: "form-control" %>
 </div>
-<div class="mb-3">
+ 
+  <div class="mb-3">
 <%= f.label :voting_rules %>
 <%= f.text_area :voting_rules, class: "form-control" %>
 </div>
-<div class="mb-3">
+ 
+  <div class="mb-3">
 <%= f.label :participant_eligibility %>
 <%= f.text_area :participant_eligibility, class: "form-control" %>
 </div>
+ 
+  <div class="mb-3">
 <%= f.label :start_date %>
-<%= f.date_field :start_date %>
+<%= f.date_field :start_date, class: "form-control" %>
+</div>
+ 
+  <div class="mb-3">
 <%= f.label :end_date %>
-<%= f.date_field :end_date %>
-<%= f.submit class: "btn btn-success" %>
+<%= f.date_field :end_date, class: "form-control" %>
+</div>
+ 
+  <%= f.submit "Save Phase", class: "btn btn-success" %>
 <% end %>
+
+ 
