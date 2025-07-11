@@ -57,6 +57,8 @@ resources :projects do
   resource :impact_metric
 end
 
+---
+
 ## 🧪 Installation
 Clone the repo git clone https://github.com/your-username/budget-platform.git
 
